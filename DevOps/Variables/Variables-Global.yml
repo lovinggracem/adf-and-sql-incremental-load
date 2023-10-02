@@ -1,5 +1,5 @@
 variables:
-  ServiceConnection: 'clintazrealallrgs'
+  ServiceConnection: 'lovinggrace_az_sc'
   DevEnvironment: 'Dev'
   TestEnvironment: 'Test'
   PpeEnvironment: 'Ppe'
