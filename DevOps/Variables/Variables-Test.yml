@@ -11,7 +11,7 @@ variables:
   # GHUB lz variables
   SubscriptionIdGHUB: "05d99ae7-a80c-47ea-8867-7ec5c1dc34a6"
   ResourceGroupNameGHUB: "lz-ghub-${{ lower(variables.Environment) }}-uks-rg-01"
-  DataFactoryNameGHUB: "lz-ghub-${{ lower(variables.Environment) }}-uks-adf-01"
+  DataFactoryNameGHUB: "lz-ghubmawire-${{ lower(variables.Environment) }}-uks-adf-01"
   AzureDataFactoryPipelinesArmTemplateParametersGHUBAdf01: "Services/DataAnalytics/ARMTemplateParametersForFactory01${{ variables.Environment }}.json" #this file doesn't exist for dev
 
   # Arm template parameter files
