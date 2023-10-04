@@ -91,76 +91,7 @@
       },
       "identity": {
         "type": "SystemAssigned"
-      },
-      "resources": [
-                {
-                    "type": "databases",
-                    "apiVersion": "2017-03-01-preview",
-                    "location": "[parameters('location')]",
-                    "dependsOn": [
-                        "[parameters('sqlServerName')]"
-                    ],
-                    "name": "master",
-                    "properties": {}
-                },
-                {
-                    
-                    "condition": "[parameters('EnableDiagnostics')]",
-                    "type": "databases/providers/diagnosticSettings",
-                    "name": "[concat('master/microsoft.insights/',variables('diagnosticSettingsName'))]",
-                    "dependsOn": [
-                        "[parameters('sqlServerName')]",
-                        "[resourceId('Microsoft.Sql/servers/databases', parameters('sqlServerName'), 'master')]"
-                    ],
-                    "apiVersion": "2017-05-01-preview",
-                    "properties": {
-                        "name": "[variables('diagnosticSettingsName')]",
-                        "workspaceId": "[resourceId(parameters('SubscriptionID'), parameters('LogAnalyticsResourceGroup'), 'Microsoft.OperationalInsights/workspaces',parameters('LogAnaWspName'))]",
-                        "logs": [
-                            {
-                                "category": "SQLSecurityAuditEvents",
-                                "enabled": true,
-                                "retentionPolicy": {
-                                    "days": 0,
-                                    "enabled": false
-                                }
-                            },
-                            {
-                                "condition": "[parameters('isMSDevOpsAuditEnabled')]",
-                                "category": "DevOpsOperationsAudit",
-                                "enabled": true,
-                                "retentionPolicy": {
-                                    "days": 0,
-                                    "enabled": false
-                                }
-                            }
-                        ]
-                    }
-                },
-                {
-                    "apiVersion": "2017-03-01-preview",
-                    "type": "auditingSettings",
-                    "name": "DefaultAuditingSettings",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Sql/servers/', parameters('sqlServerName'))]"
-                    ],
-                    "properties": {
-                        "State": "Enabled",
-                        "isAzureMonitorTargetEnabled": true
-                    }
-                },
-                {
-                    "condition": "[parameters('isMSDevOpsAuditEnabled')]",
-                    "type": "devOpsAuditingSettings",
-                    "apiVersion": "2020-08-01-preview",
-                    "name": "Default",
-                    "dependsOn": [ "[parameters('sqlServerName')]" ],
-                    "properties": {
-                        "State": "Enabled",
-                        "isAzureMonitorTargetEnabled": true
-                    }
-                }
-            ]
+      }
     },
     {
       "type": "Microsoft.Sql/servers/databases",
