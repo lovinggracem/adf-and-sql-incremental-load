@@ -39,4 +39,13 @@ variables:
   DatabaseName_facstuff_target: "dba-facstuff-target"
 
   # Sql server variable for server ghub
-  AzureSqlServerName_ghub: "sqlsrv-yqnh5nxtq5rhi-${{ lower(variables.Environment) }}.database.windows.net" 
+  AzureSqlServerName_ghub: "sqlsrv-hruappay3hq6e-${{ lower(variables.Environment) }}.database.windows.net" 
+  # TODO, find a way to grab the randomly generated name from the ARM template for SQL server, on line 7 (see below) to be output so that we can use it in the dacpac deployment
+    #  "parameters": {
+    # "sqlServerName": {
+    #   "type": "string",
+    #   "defaultValue": "[concat('sqlsrv-',uniqueString('sqlsrv-',resourceGroup().location,'-', resourceGroup().id),'-test')]",
+    #   "metadata": {
+    #     "description": "The name of the SQL logical server."
+    #   }
+    # },
